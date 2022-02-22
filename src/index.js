@@ -1,12 +1,15 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import App from './App'
 import { initContract } from './utils'
 
 window.nearInitPromise = initContract()
   .then(() => {
     ReactDOM.render(
-      <App />,
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>,
       document.querySelector('#root')
     )
   })

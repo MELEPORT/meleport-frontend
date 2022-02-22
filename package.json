@@ -1,20 +1,16 @@
 {
-  "name": "meleport",
+  "name": "nft-market-frontend-pik",
   "version": "0.1.0",
   "license": "UNLICENSED",
   "scripts": {
-    "build": "npm run build:contract && npm run build:web",
-    "build:contract": "node contract/compile.js",
-    "build:contract:debug": "node contract/compile.js --debug",
-    "build:web": "parcel build src/index.html --public-url ./",
+    "build": "env-cmd -f ./develop.env parcel build src/index.html --public-url ./",
     "dev:deploy:contract": "near dev-deploy",
     "deploy:contract": "near deploy",
     "deploy:pages": "gh-pages -d dist/",
     "deploy": "npm run build && npm run deploy:contract && npm run deploy:pages",
-    "prestart": "npm run build:contract:debug && npm run dev:deploy:contract",
-    "start": "echo The app is starting! It will automatically open in your browser when ready && env-cmd -f ./neardev/dev-account.env parcel src/index.html --open",
-    "dev": "nodemon --watch contract/src -e rs --exec \"npm run start\"",
-    "test": "npm run build:contract:debug && cd contract && cargo test -- --nocapture && cd .. && jest test --runInBand"
+    "start": "echo The app is starting! It will automatically open in your browser when ready && env-cmd -f ./develop.env parcel src/index.html --open",
+    "dev": "nodemon --watch contract -e ts --exec \"npm run start\"",
+    "test": "npm run build:contract:debug && cd contract && npm run test && cd .. && jest test --runInBand"
   },
   "devDependencies": {
     "@babel/core": "~7.14.0",
@@ -32,9 +28,15 @@
     "shelljs": "~0.8.4"
   },
   "dependencies": {
+    "@ant-design/icons": "^4.7.0",
+    "antd": "^4.18.3",
+    "bn.js": "^5.2.0",
+    "borsh": "latest",
     "near-api-js": "~0.43.1",
     "react": "~17.0.1",
     "react-dom": "~17.0.1",
+    "react-router": "^6.2.1",
+    "react-router-dom": "^6.2.1",
     "regenerator-runtime": "~0.13.5"
   },
   "resolutions": {
