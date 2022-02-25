@@ -51,7 +51,7 @@ export default function App() {
                     </Menu.Item>
                 </Menu>
                 <br />
-                <a href="https://github.com/MELEPORT/meleport-frontend/wiki">MELEPORT Document</a>
+                <a target='_blank' href="https://github.com/MELEPORT/meleport-frontend/wiki">MELEPORT Document</a>
             </Sider>
             <Layout>
                 <Header className="site-layout-sub-header-background" style={{ padding: 15 }} >
